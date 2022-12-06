@@ -82,7 +82,7 @@ const pars = [
 ]
 
 class Carousel extends React.Component {
-  constructor(props) {
+  constructor(props: Any) {
     super(props)
 
     this.state = {
