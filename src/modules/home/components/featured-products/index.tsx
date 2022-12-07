@@ -1,8 +1,7 @@
-import { useFeaturedProductsQuery } from "@lib/hooks/use-layout-data"
-import Image from "next/image"
-import React from "react"
-import UnderlineLink from "@modules/common/components/underline-link"
-import { useRouter } from "next/router"
+import { useFeaturedProductsQuery } from "@lib/hooks/use-layout-data";
+import Image from "next/image";
+import React from "react";
+import UnderlineLink from "@modules/common/components/underline-link";
 const imgUrls = [
   <Image
     src="/big_sur.jpg"
@@ -70,7 +69,7 @@ const imgUrls = [
     className="absolute inset-0"
     draggable="false"
   />,
-]
+];
 
 const pars = [
   "Carrot Hauler mantleing onto big sur ledge",
@@ -79,84 +78,85 @@ const pars = [
   "Carrot Hauler in the Yosemite Bug following a trip to the Valley",
   "Hew and the haulers kicking it in Joshua Tree",
   "A Deluxe Flosser in the wild",
-]
+];
 
-class Carousel extends React.Component {
-  constructor(props: Any) {
-    super(props)
+// class Carousel extends React.Component {
+//   constructor(props: <Any>) {
+//     super(props);
 
-    this.state = {
-      currentImageIndex: 0,
-    }
+//     this.state = {
+//       currentImageIndex: 0,
+//     };
 
-    this.nextSlide = this.nextSlide.bind(this)
-    this.previousSlide = this.previousSlide.bind(this)
-  }
+//     this.nextSlide = this.nextSlide.bind(this);
+//     this.previousSlide = this.previousSlide.bind(this);
+//   }
 
-  previousSlide() {
-    const lastIndex = imgUrls.length - 1
-    const { currentImageIndex } = this.state
-    const shouldResetIndex = currentImageIndex === 0
-    const index = shouldResetIndex ? lastIndex : currentImageIndex - 1
+//   previousSlide() {
+//     const lastIndex = imgUrls.length - 1;
+//     const { currentImageIndex } = this.state;
+//     const shouldResetIndex = currentImageIndex === 0;
+//     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
 
-    this.setState({
-      currentImageIndex: index,
-    })
-  }
+//     this.setState({
+//       currentImageIndex: index,
+//     });
+//   }
 
-  nextSlide() {
-    const lastIndex = imgUrls.length - 1
-    const { currentImageIndex } = this.state
-    const shouldResetIndex = currentImageIndex === lastIndex
-    const index = shouldResetIndex ? 0 : currentImageIndex + 1
+//   nextSlide() {
+//     const lastIndex = imgUrls.length - 1;
+//     const { currentImageIndex } = this.state;
+//     const shouldResetIndex = currentImageIndex === lastIndex;
+//     const index = shouldResetIndex ? 0 : currentImageIndex + 1;
 
-    this.setState({
-      currentImageIndex: index,
-    })
-  }
+//     this.setState({
+//       currentImageIndex: index,
+//     });
+//   }
 
-  render() {
-    return (
-      <div>
-        <div className="py-12 center">
-          <div className="h-[70vh] w-full relative">
-            {imgUrls[this.state.currentImageIndex]}
-          </div>
+//   render() {
+//     return (
+//       <div>
+//         <div className="py-12 center">
+//           <div className="h-[70vh] w-full relative">
+//             {imgUrls[this.state.currentImageIndex]}
+//           </div>
 
-          <div className="flex flex-col items-center text-center">
-            <div className="flex flex-row items-center text-center">
-              <Arrow
-                direction="left"
-                clickFunction={this.nextSlide}
-                glyph="&#9664;"
-              />
-              <Arrow
-                direction="right"
-                clickFunction={this.nextSlide}
-                glyph="&#9654;"
-              />
-            </div>
-          </div>
+//           <div className="flex flex-col items-center text-center">
+//             <div className="flex flex-row items-center text-center">
+//               <Arrow
+//                 direction="left"
+//                 clickFunction={this.nextSlide}
+//                 glyph="&#9664;"
+//               />
+//               <Arrow
+//                 direction="right"
+//                 clickFunction={this.nextSlide}
+//                 glyph="&#9654;"
+//               />
+//             </div>
+//           </div>
 
-          <div className="flex flex-col items-center text-center mb-16">
-            <p className="text-xl-regular text-left text-gray-1000 max-w-xlg mb-4">
-              {pars[this.state.currentImageIndex]}
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
+//           <div className="flex flex-col items-center text-center mb-16">
+//             <p className="text-xl-regular text-left text-gray-1000 max-w-xlg mb-4">
+//               {pars[this.state.currentImageIndex]}
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
-const Arrow = ({ direction, clickFunction, glyph }) => (
-  <div className={`slide-arrow  ${direction}`} onClick={clickFunction}>
-    {glyph}
-  </div>
-)
+// const Arrow = ({ direction, clickFunction, glyph }) => (
+//   <div className={`slide-arrow  ${direction}`} onClick={clickFunction}>
+//     {glyph}
+//   </div>
+// );
+//dd <Carousel />
 
 const FeaturedProducts = () => {
-  const { data } = useFeaturedProductsQuery()
+  const { data } = useFeaturedProductsQuery();
 
   return (
     <div>
@@ -221,7 +221,6 @@ const FeaturedProducts = () => {
               and I have personally tested, destroyed, and remade.
             </p>
           </div>
-          <Carousel />
         </div>
       </div>
       <div className="bg-amber-100 px-8 py-24 flex flex-col justify-center items-center text-center">
@@ -234,7 +233,7 @@ const FeaturedProducts = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FeaturedProducts
+export default FeaturedProducts;
